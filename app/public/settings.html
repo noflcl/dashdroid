@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndroidServer </title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+        <!-- Supplied JS -->
+    <script src="assets/js/modalUtils.js"></script>
+    <script src="assets/js/apiClient.js"></script>
+</head>
+
+<body>
+    <nav>
+        <button id="menuToggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <header>
+            <div class="header-left">
+                caretaker
+            </div>
+            <div class="header-right">
+                <div class="theme-control">
+                    <label class="theme-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="theme-text">☀️</span>
+                </div>
+            </div>
+            </div>
+        </header>
+        <ul>
+            <li><span>Systems</span></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="flakes.html">Flakes</a></li>
+            <li><a href="secrets.html">Secrets</a></li>
+            <li><span>Admin</span></li>
+            <li><a class="active" href="#">Settings</a></li>
+            <li><a>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <div class="header-left">
+                <link rel="preload" as="image" href="assets/images/logo.png">
+                <img src="assets/images/logo.png" alt="Logo" class="logo">
+                <h1 class="site-name">AndroidServer</h1>
+            </div>
+            <div class="header-right">
+                <div class="logo-box">
+                    <div id="adbStatus" class="status-circle"></div>
+                    <span class="status-text">adb server</span>
+                </div>
+            </div>
+        </header>
+
+        <form id="settings-form">
+            <!-- <h3 style="padding-bottom: 15px;">Server Config</h3>
+            <div class="setting-item">
+              <label for="serverPort">Server Port</label>
+              <input type="number" id="serverPort" name="serverPort" value="8080">
+            </div> -->
+            <h3 style="padding-bottom: 15px; padding-top: 15px;">Remote Display</h3>
+            <div class="setting-item">
+              <label for="forceFullscreen">Force Fullscreen</label>
+              <input type="checkbox" id="forceFullscreen" name="forceFullscreen">
+            </div>
+            <div class="setting-item">
+              <label for="screenSize">Screen Size</label>
+              <select id="screenSize" name="screenSize">
+                <option value="auto">Auto</option>
+                <option value="1280x720">SD 1280 x 720</option>
+                <option value="1920x1080">HD 1920 x 1080</option>
+                <option value="2560x1440">2k 2560 x 1440</option>
+                <option value="3840x2160">4k 3840 x 2160</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <label for="forceOrientation">Force Orientation</label>
+              <select id="forceOrientation" name="forceOrientation">
+                <option value="none">None</option>
+                <option value="landscape">Landscape</option>
+                <option value="portrait">Portrait</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <label for="alwaysOnTop">Always On Top</label>
+              <input type="checkbox" id="alwaysOnTop" name="alwaysOnTop">
+            </div>
+            <div class="setting-item">
+              <label for="disableScreensaver">Disable Screensaver</label>
+              <input type="checkbox" id="disableScreensaver" name="disableScreensaver">
+            </div>
+            <div class="button-group">
+                <button type="submit" class="gh-solid">Save Settings</button>
+                <button type="button" class="gh-white">Restore Defaults</button>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- Reusable center popup div -->
+    <div id="globalModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <!-- Dynamic content injected here -->
+        </div>
+    </div>
+
+    <div class="narrow-warning">
+        Device too narrow<br>
+        Minimum width: 400px<br>
+        ⤵ Rotate device
+    </div>
+
+    <div id="notification" class="notification"></div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+---
+
+services:
+  dashdroid:
+    image: dashdroid
+    container_name: dashdroid
+    restart: unless-stopped
+    privileged: true
+    tty: true
+    volumes:
+      - ./settings.cfg:/app/settings.cfg
+      - /home/shoci/.android:/root/.android:rw
+      - /dev/bus/usb:/dev/bus/usb:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority:ro
+      - /run/user/1000/pulse:/run/user/1000/pulse # for audio
+    ports:
+      - "3000:3000"
+      - "5037:5037"
+    environment:
+      - NODE_ENV=development
+      - DISPLAY=:0 # for X11
+      - XAUTHORITY=/root/.Xauthority
+      - QT_X11_NO_MITSHM=1
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native # for audio
+      - SDL_AUDIODRIVER=pulseaudio 

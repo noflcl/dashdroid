@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndroidServer </title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <!-- Line graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
+        integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4"
+        crossorigin="anonymous"
+        defer>
+    </script>
+    <!-- Line graph fallback in case CDN fails -->
+    <script>
+        window.addEventListener('error', function(e) {
+            if (e.target.src && e.target.src.indexOf('chart.js') > -1) {
+                // Load backup CDN if primary fails
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
+                script.defer = true;
+                document.head.appendChild(script);
+            }
+        }, true);
+    </script>
+        <!-- Supplied JS -->
+    <script src="assets/js/modalUtils.js"></script>
+    <script src="assets/js/apiClient.js"></script>
+</head>
+
+<body data-page="index">
+    <nav>
+        <button id="menuToggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <header>
+            <div class="header-left">
+                caretaker
+            </div>
+            <div class="header-right">
+                <div class="theme-control">
+                    <label class="theme-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="theme-text">☀️</span>
+                </div>
+            </div>
+            </div>
+        </header>
+        <ul>
+            <li><span>Systems</span></li>
+            <li><a class="active" href="#">Dashboard</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="flakes.html">Flakes</a></li>
+            <li><a href="secrets.html">Secrets</a></li>
+            <li><span>Admin</span></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <div class="header-left">
+                <link rel="preload" as="image" href="assets/images/logo.png">
+                <img src="assets/images/logo.png" alt="Logo" class="logo">
+                <h1 class="site-name">AndroidServer</h1>
+            </div>
+            <div class="header-right">
+                <div class="logo-box">
+                    <div id="adbStatus" class="status-circle"></div>
+                    <span class="status-text">adb server</span>
+                </div>
+            </div>
+        </header>
+
+        <content class="dashboard-grid">
+            <div class="grid-item item1">
+                <div class="item-header-flex">
+                    <h2 class="item-header">Systems</h2>
+                    <button class="refresh-btn" title="Refresh Devices">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                    <button class="add-device-btn">+ Add New Device</button>
+                </div>
+                <div class="device-list">
+                    <!-- Devices populate here -->
+                </div>
+            </div>
+
+            <div class="grid-item item2">
+                <div class="item-header-flex">
+                <h2 class="item-header">Version / Patch Level</h2>
+                </div>
+                <!-- Device build version and patch level -->
+            </div>
+            <div class="grid-item item3">
+                <h2 class="item-header item-header-flex">CPU Load</h2>
+                <!-- Device cpu load -->
+            </div>
+            <div class="grid-item item4">
+                <h2 class="item-header item-header-flex">Memory Usage</h2>
+                <!-- Device memory usage -->
+            </div>
+            <div class="grid-item item5">
+                <h2 class="item-header">GPU Load</h2>
+                <!-- Device gpu load -->
+            </div>
+            <div class="grid-item item6">
+                <h2 class="item-header">System Logs</h2>
+                <pre class="log-content"></pre>
+            </div>
+        </content>
+
+    </main>
+
+    <!-- Reusable center popup div -->
+    <div id="globalModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <!-- Dynamic content injected here -->
+        </div>
+    </div>
+
+    <div class="narrow-warning">
+        Device too narrow<br>
+        Minimum width: 400px<br>
+        ⤵ Rotate device
+    </div>
+</body>
+
+</html>

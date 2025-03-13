@@ -13,6 +13,8 @@
 
 Web dashboard to manage ADB enabled Android devices.
 
+### Alpha Project! There will be bugs
+
 ## Install
 
 Only tested on Linux `X11`. The only command I see failing on Mac or Windows is when calling remote display commands I'm using `wmctrl` to query window titles and raise a window alert rather than spawning a new window if a remote display window is already active for that device.
@@ -73,3 +75,9 @@ If using `Nix` or `NixOS` you need flakes enabled, default virtual machine is `q
 - `nix run .#dashdroid` to build and run dashdroid with MicroVM
 
 There are more ways of using the project with Nix / NixOS. View the documentation [here](docs/nixos.md) for more examples.
+
+
+## ToDo
+  - [ ] GPU monitoring
+    - Different depending on device (create general GPU test for correct command)
+  - [ ] SSH isn't flushed out, would like to enable it from the dashboard

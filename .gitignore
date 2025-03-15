@@ -4,3 +4,4 @@ app/node_modules
 app/uploads
 docs/assets/images/apkDowngradeError.webp
 nix/direnv/.direnv
+nix/microvm/dashdroid.img

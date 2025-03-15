@@ -17,7 +17,7 @@ Web dashboard to manage ADB enabled Android devices.
 
 ## Install
 
-Only tested on Linux `X11`. The only command I see failing on Mac or Windows is when calling remote display commands I'm using `wmctrl` to query window titles and raise a window alert rather than spawning a new window if a remote display window is already active for that device.
+Only tested on Linux `X11` currently Wayland support close behind. The only command I see failing on local Mac or Windows installs is when calling remote display commands. I'm currently using `wmctrl` to query window titles and raise an alert rather than spawning a new window if a remote display for that device is active already.
 
 ### Dependencies
 If you are running locally without Docker or MicroVM you must install the following dependencies:
@@ -28,6 +28,8 @@ If you are running locally without Docker or MicroVM you must install the follow
 
 Optional:
 - `ssh` - If you decide to install Termux or nix-on-droid
+
+<mark>Note:</mark> When installing `scrcpy` most package managers have outdated versions and remote display will fail on newer devices. See the [install script](https://github.com/noflcl/dashdroid/blob/main/download_scrcpy.sh) I use for the Docker build for a reference of how I install the latest build on Ubuntu. Or check out the projects install docs for [linux](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md), [mac](https://github.com/Genymobile/scrcpy/blob/master/doc/macos.md), and [windows](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md).
 
 ## Start
 
@@ -76,8 +78,14 @@ If using `Nix` or `NixOS` you need flakes enabled, default virtual machine is `q
 
 There are more ways of using the project with Nix / NixOS. View the documentation [here](docs/nixos.md) for more examples.
 
-
 ## ToDo
+
+Almost to many to list, this is early days
+
   - [ ] GPU monitoring
-    - Different depending on device (create general GPU test for correct command)
-  - [ ] SSH isn't flushed out, would like to enable it from the dashboard
+    - Commands differ depending on devices (create general solution)
+  - [ ] SSH isn't flushed out and I want to enable it from the dashboard
+  - [ ] Screen recording for demos
+  - [ ] Video / Audio codec selection support per device
+  - [ ] Mic and Camera features
+

@@ -56,7 +56,7 @@ Remember to build the container image from the supplied Dockerfile first
 
 ## MicroVM
 
-You need flakes enabled, default virtual machine is `qemu` easily change with your choice of [supported hypervisor]("https://github.com/astro/microvm.nix#hypervisors").
+You need flakes enabled, default virtual machine is `qemu` easily changed with your choice of [supported hypervisor]("https://github.com/astro/microvm.nix#hypervisors").
 
 - `nix run .#dashdroid` to build and run dashdroid with MicroVM
 
@@ -64,8 +64,4 @@ You need flakes enabled, default virtual machine is `qemu` easily change with yo
 
 ## direnv
 
-<mark>Note:</mark> I'm throwing an error for holding the shell, this error is safe to ignore.
-
-> direnv export bash]) is taking a while to execute. Use CTRL-C to give up
-
-Navigate into the `nix -> direnv` and execute `direnv allow` to start the dashdroid server.
+You need flakes enabled, navigate into the `nix -> direnv` and execute `direnv allow` to start the dashdroid server 😎

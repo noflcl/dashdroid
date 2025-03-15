@@ -51,7 +51,7 @@ Current base image is Ubuntu 22.04, build with Docker and run the dashboard loca
 
 <mark>Note:</mark> I have yet to overwrite my adb keys with this project, I suggest backing your local keys up (If you have any).
 
-```
+```bash
 docker run \
   --name dashdroid \
   --restart unless-stopped \
@@ -88,4 +88,3 @@ Almost to many to list, this is early days
   - [ ] Screen recording for demos
   - [ ] Video / Audio codec selection support per device
   - [ ] Mic and Camera features
-

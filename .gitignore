@@ -1,4 +1,5 @@
 settings.cfg
+app/.dev-server.pid
 app/node_modules
 app/uploads
 docs/assets/images/apkDowngradeError.webp

@@ -12,6 +12,9 @@
 
   [![Web dashboard in action](https://img.youtube.com/vi/HNant_M_7U8/0.jpg)](https://www.youtube.com/watch?v=HNant_M_7U8 "dashdroid web dashboard")
 
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=HNant_M_7U8" target="_blank"><img src="http://img.youtube.com/vi/HNant_M_7U8/0.jpg"
+alt="web dashboard to manage android devices" width="500px" height="500px" border="2" /></a>
+
 </p>
 
 Web dashboard to manage ADB enabled Android devices.

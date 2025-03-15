@@ -8,7 +8,8 @@
 </p>
 <p align="center">
   <!-- <img src="doc/src/demo.gif" alt="Demo GIF"> -->
-  <img src="docs/assets/images/dashdroid-panel.webp">
+  <!-- <img src="docs/assets/images/dashdroid-panel.webp"> -->
+  [![Web dashboard nin action](https://img.youtube.com/vi/HNant_M_7U8/0.jpg)](https://www.youtube.com/watch?v=HNant_M_7U8)
 </p>
 
 Web dashboard to manage ADB enabled Android devices.

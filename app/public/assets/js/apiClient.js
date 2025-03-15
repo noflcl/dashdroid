@@ -589,7 +589,7 @@ function showPowerMenu(deviceId, isBootloader = false, unlockedStatus = null) {
 
   if (isBootloader) {
     if (rebootBtn) {
-      rebootBtn.addEventListener('click', () => handleFastbootCommand(`reboot`));
+      rebootBtn.addEventListener('click', () => handleFastbootCommand(`fastboot reboot`));
     }
     if (lockBtn) {
       lockBtn.addEventListener('click', () => handleFastbootCommand(`${lockCommand}`));
@@ -607,7 +607,7 @@ function showPowerMenu(deviceId, isBootloader = false, unlockedStatus = null) {
       recoveryBtn.addEventListener('click', () => {
         const warningContent = `
           <div class="modal-header">
-            <h2 style="color: var(--status-warning)">Warning</h2>          
+            <h2 style="color: var(--status-warning)">Warning</h2>
           </div>
           <div class="modal-content">
             <p>If the device doesn't load a recovery image hold Power + Volume Up until the device reboots, then release both buttons.</p>

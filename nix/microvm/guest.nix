@@ -100,7 +100,7 @@
 
     script = ''
       if [ ! -d "/var/lib/dashdroid/app" ]; then
-        git clone https://github.com/noflcl/dashdroid.git app
+        git clone https://github.com/noflcl/dashdroid app
       else
         cd app
         git pull

@@ -25,18 +25,8 @@
             usbutils
             wmctrl
           ];
+
           shellHook = ''
-            # export REPO_DIR="$HOME/dashdroid"
-
-            # if [ ! -d "$REPO_DIR" ]; then
-            #   echo "Cloning dashdroid repository..."
-            #   git clone https://github.com/noflcl/dashdroid.git
-            #   else
-            #   echo "Updating dashdroid repository..."
-            #   cd "$REPO_DIR"
-            #   git pull
-            # fi
-
             export REPO_DIR="$PWD/../../app"
 
             export PATH="$REPO_DIR:$PATH"

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 {
   imports =
     [
@@ -18,7 +18,7 @@
     firewall = {
       enable = true;
       trustedInterfaces = [ ];
-      allowedTCPPorts = [ ];
+      allowedTCPPorts = [ 3000 ];
       allowedUDPPorts = [ ];
     };
   };
@@ -35,7 +35,8 @@
       password = "";
     };
     android = {
-      isSystemUser = true;
+      # isSystemUser = true;
+      isNormalUser = true;
       description = "adb user account";
       group = "users";
       extraGroups = [ "adbusers" ];
@@ -82,33 +83,38 @@
   ];
 
   systemd.services.dashdroid = {
-    description = "dashdroid Auto-start Service";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    description = lib.mkForce "dashdroid Auto-start Service";
+    wantedBy = lib.mkForce [ "multi-user.target" ];
+    after = lib.mkForce [ "network-online.target" ]; # Ensure network is fully up
 
     environment = {
-      HOME = "/var/lib/dashdroid";
+      HOME = lib.mkForce "/var/lib/dashdroid";
+      GIT_TERMINAL_PROMPT = lib.mkForce "0"; # Disable git prompts
+      PATH = lib.mkForce "${pkgs.git}/bin:${pkgs.nodejs_23}/bin:${pkgs.coreutils}/bin"; # Add paths to git and node
     };
 
     serviceConfig = {
-      Type = "simple";
-      User = "android";
-      Group = "users";
-      WorkingDirectory = "/var/lib/dashdroid";
-      Restart = "always";
+      Type = lib.mkForce "simple";
+      User = lib.mkForce "android";
+      Group = lib.mkForce "users";
+      WorkingDirectory = lib.mkForce "/var/lib/dashdroid";
+      Restart = lib.mkForce "always";
     };
 
-    script = ''
+    script = lib.mkForce ''
+      echo "Starting dashdroid service..."
       if [ ! -d "/var/lib/dashdroid/app" ]; then
-        git clone https://github.com/noflcl/dashdroid app
+        echo "Cloning repository..."
+        git clone https://github.com/noflcl/dashdroid ~/
       else
-        cd app
+        echo "Pulling latest changes..."
+        cd /var/lib/dashdroid/app
         git pull
       fi
 
-      cd app
+      cd /var/lib/dashdroid/app
       npm install
-      npm run dev
+      npm start dev
     '';
   };
 

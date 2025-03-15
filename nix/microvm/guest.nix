@@ -35,7 +35,6 @@
       password = "";
     };
     android = {
-      # isSystemUser = true;
       isNormalUser = true;
       description = "adb user account";
       group = "users";

@@ -72,6 +72,8 @@ docker run \
 
 ## MicroVM
 
+Is not currently building and running the service, work in progress. Check out alternate ways to run with Nix, `direnv` working perfectly.
+
 If using `Nix` or `NixOS` you need flakes enabled, default virtual machine is `qemu` easily change with your choice of [supported hypervisor]("https://github.com/astro/microvm.nix#hypervisors").
 
 - `nix run .#dashdroid` to build and run dashdroid with MicroVM
